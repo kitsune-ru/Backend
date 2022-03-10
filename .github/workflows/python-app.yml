@@ -1,0 +1,33 @@
+name: Python FastAPI CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout repository 🛎️
+      
+    - name: Setup Python 3.10 🔖
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+        
+    - name: Run script 🛠
+      run: python3 -m venv ./venv && source ./venv/bin/activate
+      
+    - name: Install dependencies 🕸
+      run: pip install -r ./requirements.txt
+      
+    - name: Stop last version of server 🔥
+      run: pm2 delete backend-api
+      
+    - name: Run server 🦊
+      run: pm2 start "uvicorn main:app --root-path /api" --name backend-api
