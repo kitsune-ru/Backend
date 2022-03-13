@@ -1,6 +1,5 @@
 import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
-import torch
 
 
 def return_count_of_elem(data_str):

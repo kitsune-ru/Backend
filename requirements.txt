@@ -32,3 +32,9 @@ torchvision===0.4.2
 tqdm==4.63.0
 typing-extensions==4.1.1
 uvicorn==0.17.4
+pymysql
+aiomysql
+python-jose
+cryptography
+pydantic[email]
+seaborn
