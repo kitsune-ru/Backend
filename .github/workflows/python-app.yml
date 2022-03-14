@@ -27,7 +27,7 @@ jobs:
       run: pip install -r ./requirements.txt
       
     - name: Stop last version of server 🔥
-      run: pm2 delete backend-main
+      run: pm2 delete backend-api
       
     - name: Run server 🦊
-      run: pm2 start "uvicorn main:app --root-path /api" --name backend-main
+      run: pm2 start "uvicorn main:app --root-path /api" --name backend-api
