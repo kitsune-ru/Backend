@@ -11,6 +11,6 @@ class ReportRepository(BaseRepository):
         query = reports.select().limit(limit).offset(skip)
         return await self.database.fetch_all(query=query)
 
-    async def get_by_reports_name(self, service_id: str) -> List[Reports]:
-        query = reports.select().where(reports.c.service_id == service_id)
+    async def get_by_reports_name(self, service_id: str, limit:int = 100, skip: int=0) -> List[Reports]:
+        query = reports.select().where(reports.c.service_id == service_id).limit(limit).offset(skip)
         return await self.database.fetch_all(query=query)
