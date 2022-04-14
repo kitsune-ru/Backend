@@ -32,8 +32,10 @@ async def get_service(services: ServiceRepository = Depends(get_service_reposito
 
 @router.get("/{id}/reports", response_model=List[Reports])
 async def get_reports_for_service(id: str,
-                                  reports: ReportRepository = Depends(get_report_repository)):
-    return await reports.get_by_reports_name(id)
+                                  reports: ReportRepository = Depends(get_report_repository),
+                                  limit: int = 100,
+                                  skip: int = 0):
+    return await reports.get_by_reports_name(id, limit=limit, skip=skip)
 
 
 @router.get("/{id}/ML_cluster_center", response_model=List[ML_cluster_center])
