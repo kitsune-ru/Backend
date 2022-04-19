@@ -4,6 +4,9 @@ services:
 
   mysql-development:
     image: mysql:8.0.17
+    restart: always
+    volumes:
+     - ../../../../backup.sql:/docker-entrypoint-initdb.d/backup.sql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: kitsune_db
